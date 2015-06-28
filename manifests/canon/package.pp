@@ -23,10 +23,39 @@ define printer::canon::package (
 ) {
   $pkg_id = $ids[$title]
   $source = "${base_url}?id=${pkg_id}&${url_extra}&lang=${lang}"
-  package { "PrinterCanonMx860-${title}":
-    ensure   => $ensure,
-    provider => $provider,
-    source   => $source,
+
+  if $provider == 'appdmg' {
+
+    package { "PrinterCanonMx860-${title}":
+      ensure   => $ensure,
+      provider => $provider,
+      source   => $source,
+    }
+
+  } elsif $provider == 'pkgdmg' {
+
+    include wget
+
+    $tmpfile = "/tmp/pkg-${title}.dmg"
+
+    wget::fetch { $source:
+      destination => $tmpfile,
+    }
+    ->
+    package { "PrinterCanonMx860-${title}":
+      ensure   => $ensure,
+      provider => $provider,
+      source   => $tmpfile,
+    }
+    ->
+    file { $tmpfile:
+      ensure => absent,
+    }
+
+  } else {
+
+    fail('only pkgdmg and appdmg providers are supported')
   }
+
 }
 
