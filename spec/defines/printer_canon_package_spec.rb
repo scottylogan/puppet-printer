@@ -13,7 +13,7 @@ describe "printer::canon::package" do
   it do
     should contain_package("PrinterCanonMx860-mcpd").with({
       :source   => "http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNTY3NjAy&cmp=ABR&lang=EN",
-      :provider => 'appdmg'
+      :provider => 'pkgdmg'
     })
   end
 end

@@ -19,12 +19,13 @@ define printer::canon::package (
   $lang      = 'EN',
   $url_extra = 'cmp=ABR',
   $base_url  = 'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do',
+  $provider  = 'pkgdmg',
 ) {
   $pkg_id = $ids[$title]
   $source = "${base_url}?id=${pkg_id}&${url_extra}&lang=${lang}"
   package { "PrinterCanonMx860-${title}":
     ensure   => $ensure,
-    provider => 'appdmg',
+    provider => $provider,
     source   => $source,
   }
 }

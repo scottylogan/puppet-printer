@@ -24,12 +24,11 @@
 #  mmno-mac-...       MP Navigator EX Opener
 #  mnve_...-mac-...   MP Navigator EX
 #  msm_-mac-...       Solution Menu
-#  mwsa-mac-...       Canon PIXMA Wireless Setup Assistant (Mac)
 
 
 class printer::canon::mx860 (
   $ensure    = 'present',
-  $packages  = [ 'msd', 'mcpd', 'mnt', 'mepe', 'mwsa' ],
+  $packages  = [ 'msd', 'mcpd', 'mnt', 'mepe' ],
   $lang      = 'EN',
   $url_extra = 'cmp=ABR',
   $base_url  = 'http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do',
@@ -42,7 +41,6 @@ class printer::canon::mx860 (
     'mmno' => 'MDIwMDAwMzMwMjAx',
     'mnve' => 'MDIwMDAwMzI4MzAx',
     'msm'  => 'MDIwMDAwMDM2MjA0',
-    'mwsa' => 'MDIwMDAwMzMwOTAy',
   },
 ) {
 
