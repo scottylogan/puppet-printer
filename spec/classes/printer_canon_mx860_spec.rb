@@ -8,7 +8,7 @@ describe "printer::canon::mx860" do
   }
   it {
     should contain_package("PrinterCanonMx860-mcpd").with({
-      :source   => "http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNTY3NjAy&cmp=ABR&lang=EN",
+      :source   => "/tmp/pkg-mcpd.dmg",
       :provider => 'pkgdmg'
     })
   }
@@ -25,7 +25,7 @@ describe "printer::canon::mx860" do
   ids.each do |pkg_name, pkg_id|
     it {
       should contain_package("PrinterCanonMx860-#{pkg_name}").with({
-        :source   => "http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=#{pkg_id}&cmp=ABR&lang=EN",
+        :source   => "/tmp/pkg-#{pkg_name}.dmg",
         :provider => 'pkgdmg'
       })
     }
